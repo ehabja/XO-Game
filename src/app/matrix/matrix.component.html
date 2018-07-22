@@ -1,0 +1,22 @@
+<table *ngIf="state == 0" table align="center">
+    <tr *ngFor="let x of matrix; let i=index">
+        <td *ngFor="let y of x; let j=index" >
+            <div (click)="playerClicked(i,j)">
+                <app-cell imageSource="/assets/{{y}}.png"></app-cell>   
+            </div>
+        </td>
+    </tr>
+</table>
+
+<h1 *ngIf="state == 1">Hard Luck</h1>
+<app-cell (click)="playAgain()" *ngIf="state == 1" imageSource="/assets/o.png"></app-cell> 
+
+<h1 *ngIf="state == 2">You Win</h1>
+<app-cell (click)="playAgain()" *ngIf="state == 2" imageSource="/assets/x.png"></app-cell> 
+
+<h1 *ngIf="state== 3">DRAW</h1>
+<app-cell (click)="playAgain()" *ngIf="state == 3" imageSource="/assets/x.png"></app-cell> 
+<app-cell (click)="playAgain()" *ngIf="state == 3" imageSource="/assets/o.png"></app-cell> 
+
+<h1 *ngIf="state != 0" (click)="playAgain()">RESTART GAME</h1>
+
